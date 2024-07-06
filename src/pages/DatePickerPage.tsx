@@ -24,7 +24,6 @@ import { format } from "date-fns";
 import { useState } from "react";
 import { Calendar } from "../components/ui/calendar";
 import { Input } from "../components/ui/input";
-import ComponentCode from "../ComponentCode";
 
 const DatePickerPage = () => {
   const [date, setDate] = useState<Date | undefined>(
