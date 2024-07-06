@@ -1,5 +1,4 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import "./App.css";
 import "./simplyStyle/main.scss";
 import HomePage from "./pages/HomePage";
 import { Button } from "./components/ui/button";
