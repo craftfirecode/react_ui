@@ -9,30 +9,25 @@ import { Calendar } from "../components/ui/calendar";
 import { Input } from "../components/ui/input";
 import ComponentCode from "../ComponentCode";
 
-const DatePickerPage = () => {
-  const [date, setDate] = useState<Date | undefined>(
-    new Date("Thu Jul 18 2024 00:00:00 GMT+0200 (Mitteleuropäische Sommerzeit)")
-  );
+const codeString = `
+  import {
+    Popover,
+    PopoverTrigger,
+    PopoverContent,
+  } from "@radix-ui/react-popover";
+  import { format } from "date-fns";
+  import { useState } from "react";
+  import { Calendar } from "../components/ui/calendar";
+  import { Input } from "../components/ui/input";
 
-  const codeString = `
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-} from "@radix-ui/react-popover";
-import { format } from "date-fns";
-import { useState } from "react";
-import { Calendar } from "../components/ui/calendar";
-import { Input } from "../components/ui/input";
+  const DatePickerPage = () => {
+    const [date, setDate] = useState<Date | undefined>(
+      new Date(
+        "Thu Jul 18 2024 00:00:00 GMT+0200 (Mitteleuropäische Sommerzeit)"
+      )
+    );
 
-const DatePickerPage = () => {
-  const [date, setDate] = useState<Date | undefined>(
-    new Date("Thu Jul 18 2024 00:00:00 GMT+0200 (Mitteleuropäische Sommerzeit)")
-  );
-
-
-  return (
-    <div>
+    return (
       <Popover>
         <PopoverTrigger asChild>
           <Input
@@ -51,13 +46,16 @@ const DatePickerPage = () => {
           />
         </PopoverContent>
       </Popover>
-      <ComponentCode codeString={codeString} />
-    </div>
-  );
-};
+    );
+  };
 
-export default DatePickerPage;
-  `;
+  export default DatePickerPage;
+`;
+
+const DatePickerPage = () => {
+  const [date, setDate] = useState<Date | undefined>(
+    new Date("Thu Jul 18 2024 00:00:00 GMT+0200 (Mitteleuropäische Sommerzeit)")
+  );
 
   return (
     <div>

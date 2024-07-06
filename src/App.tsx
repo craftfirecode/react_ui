@@ -5,12 +5,14 @@ import DatePickerPage from "./pages/DatePickerPage";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/datePicker" element={<DatePickerPage />} />
-      </Routes>
-    </BrowserRouter>
+    <div className="container">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/datePicker" element={<DatePickerPage />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 
