@@ -1,0 +1,76 @@
+// Variablen
+$gutter-width: 30px; // Abstand zwischen den Spalten
+$grid-columns: 12; // Anzahl der Spalten im Grid
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+// Mixins
+@mixin make-col-ready {
+  position: relative;
+  padding-right: $gutter-width / 2;
+  padding-left: $gutter-width / 2;
+}
+
+@mixin make-col($size, $columns: $grid-columns) {
+  flex: 0 0 percentage($size / $columns);
+  max-width: percentage($size / $columns);
+}
+
+// Container
+.container {
+  width: 100%;
+  padding-right: $gutter-width / 2;
+  padding-left: $gutter-width / 2;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.container-fluid {
+  width: 100%;
+  padding-right: $gutter-width / 2;
+  padding-left: $gutter-width / 2;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// Rows
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -$gutter-width / 2;
+  margin-left: -$gutter-width / 2;
+}
+
+// Columns
+.col {
+  @include make-col-ready;
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+@for $i from 1 through $grid-columns {
+  .col-#{$i} {
+    @include make-col($i);
+  }
+}
+
+// Media Queries
+@each $breakpoint, $breakpoint-width in $breakpoints {
+  @media (min-width: $breakpoint-width) {
+    .col-#{$breakpoint} {
+      @include make-col-ready;
+    }
+
+    @for $i from 1 through $grid-columns {
+      .col-#{$breakpoint}-#{$i} {
+        @include make-col($i);
+      }
+    }
+  }
+}

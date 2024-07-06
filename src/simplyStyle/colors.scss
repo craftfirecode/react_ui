@@ -1,0 +1,65 @@
+// Definiere Basisfarben
+$colors: (
+  "primary": #007bff,
+  "secondary": #6c757d,
+  "success": #28a745,
+  "danger": #dc3545,
+  "warning": #ffc107,
+  "info": #17a2b8,
+  "light": #f8f9fa,
+  "dark": #343a40
+);
+
+// Generiere Textfarben-Klassen
+@each $color, $value in $colors {
+  .text-#{$color} {
+    color: $value !important;
+  }
+}
+
+// Generiere Hintergrundfarben-Klassen
+@each $color, $value in $colors {
+  .bg-#{$color} {
+    background-color: $value !important;
+  }
+}
+
+// Generiere Buttonfarben-Klassen
+@each $color, $value in $colors {
+  .btn-#{$color} {
+    background-color: $value;
+    border-color: darken($value, 5%);
+    color: #fff;
+
+    &:hover {
+      background-color: darken($value, 7.5%);
+      border-color: darken($value, 10%);
+    }
+  }
+}
+
+// Generiere Borderfarben-Klassen
+@each $color, $value in $colors {
+  .border-#{$color} {
+    border-color: $value !important;
+  }
+}
+
+@each $color, $value in $colors {
+    .btn-outline-#{$color} {
+      background-color: transparent;
+      color: $value;
+      border: 1px solid $value;
+  
+      &:hover, &:focus {
+        background-color: $value;
+        border-color: darken($value, 10%);
+        color: white;
+      }
+  
+      &:active {
+        background-color: darken($value, 10%);
+        border-color: darken($value, 10%);
+      }
+    }
+  }

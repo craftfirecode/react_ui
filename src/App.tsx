@@ -1,8 +1,8 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import "./App.css";
+import "./simplyStyle/main.scss";
 import HomePage from "./pages/HomePage";
-import DatePickerPage from "./pages/DatePickerPage";
-import CalendarPage from "./pages/CalendarPage";
+import { Button } from "./components/ui/button";
 
 function App() {
   return (
@@ -15,22 +15,42 @@ function App() {
                 Home
               </Link>
             </li>
-            <li>
-              <Link to="/datePicker" className="hover:text-gray-300">
-                Date Picker
-              </Link>
-            </li>
-            <li>
-              <Link to="/calandar" className="hover:text-gray-300">
-                Calendar
-              </Link>
-            </li>
           </ul>
         </nav>
+
+        <h1>Headline 1</h1>
+        <h2>Headline 2</h2>
+        <h3>Headline 3</h3>
+        <h4>Headline 4</h4>
+        <h5>Headline 5</h5>
+        <h6>Headline 6</h6>
+
+        <Button variant="primary" size="sm">Demo</Button> 
+        <Button variant="secondary" size="sm">Demo</Button> 
+        <Button variant="danger" size="sm">Demo</Button> 
+
+        <Button variant="primary" size="default">Demo</Button> 
+        <Button variant="secondary" size="default">Demo</Button> 
+        <Button variant="danger" size="default">Demo</Button> 
+        
+        <Button variant="primary" size="lg">Demo</Button> 
+        <Button variant="secondary" size="lg">Demo</Button> 
+        <Button variant="danger" size="lg">Demo</Button> 
+
+        <Button variant="outline_primary" size="sm">Demo</Button> 
+        <Button variant="outline_secondary" size="sm">Demo</Button> 
+        <Button variant="outline_danger" size="sm">Demo</Button> 
+
+        <Button variant="outline_primary" size="default">Demo</Button> 
+        <Button variant="outline_secondary" size="default">Demo</Button> 
+        <Button variant="outline_danger" size="default">Demo</Button> 
+        
+        <Button variant="outline_primary" size="lg">Demo</Button> 
+        <Button variant="outline_secondary" size="lg">Demo</Button> 
+        <Button variant="outline_danger" size="lg">Demo</Button> 
+
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/datePicker" element={<DatePickerPage />} />
-          <Route path="/calandar" element={<CalendarPage />} />
         </Routes>
       </BrowserRouter>
     </div>

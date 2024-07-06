@@ -1,0 +1,32 @@
+/* Grundlegende Button-Stil */
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Kleine Buttons */
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.2rem;
+}
+
+/* Mittlere Buttons */
+.btn-md {
+    padding: 0.5rem 1rem;
+}
+
+/* Große Buttons */
+.btn-lg {
+    padding: 0.8rem 1.5rem;
+}
