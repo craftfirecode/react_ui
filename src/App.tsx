@@ -2,6 +2,7 @@ import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import "./simplyStyle/main.scss";
 import HomePage from "./pages/HomePage";
 import { Button } from "./components/ui/button";
+import './generatedStyles.css';
 
 function App() {
   return (
