@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Checkbox from "../components/ui/checkbox";
 import Radio from "../components/ui/radio";
 import Switch from "../components/ui/switch";
+import { Button } from '../components/ui/button';
 
 const HomePage = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -22,6 +23,8 @@ const HomePage = () => {
 
   return (
     <div>
+      <Button variant="primary" size="md">Button</Button>
+      <Button variant="outline_primary" size="md">Button</Button>
       <Checkbox
         label="Checkbox"
         checked={isChecked}
