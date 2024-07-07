@@ -41,6 +41,60 @@ const GridPage = () => {
           </div>
         </div>
       </div>
+      <div className="container d-none d-md-block d-lg-none d-xl-block">
+        <div className="row">
+          <div className="col-6 bg-primary">123</div>
+          <div className="col-6 bg-secondary">123</div>
+        </div>
+      </div>
+      <div className="container">
+        <div className="row">
+          <div className="col-6 bg-primary">ABC</div>
+          <div className="col-6 bg-secondary">ABC</div>
+        </div>
+      </div>
+      <div className="container mt-md-5">
+        <div className="row">
+          <div className="col-6 bg-primary">123</div>
+          <div className="col-6 bg-secondary">123</div>
+        </div>
+      </div>
+      <div className="container mt-5 mt-md-3 mt-lg-1 mt-xl-3">
+        <div className="row">
+          <div className="col-6 bg-primary">123</div>
+          <div className="col-6 bg-secondary">123</div>
+        </div>
+      </div>
+      <div className="container mt-2">
+        <div className="row">
+          <div className="col-6 bg-primary">123</div>
+          <div className="col-6 bg-secondary">123</div>
+        </div>
+      </div>
+      <div className="container my-1">
+        <div className="row">
+          <div className="col-6 bg-primary">123</div>
+          <div className="col-6 bg-secondary">123</div>
+        </div>
+      </div>
+      <div className="container my-3">
+        <div className="row">
+          <div className="col-6 bg-primary">123</div>
+          <div className="col-6 bg-secondary">123</div>
+        </div>
+      </div>
+      <div className="container my-0">
+        <div className="row">
+          <div className="col-6 bg-primary">123</div>
+          <div className="col-6 bg-secondary">123</div>
+        </div>
+      </div>
+      <div className="container my-0">
+        <div className="row">
+          <div className="col-6 bg-primary">123</div>
+          <div className="col-6 bg-secondary">123</div>
+        </div>
+      </div>
     </div>
   );
 };

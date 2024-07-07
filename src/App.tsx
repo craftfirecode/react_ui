@@ -29,7 +29,7 @@ function App() {
             </li>
             <li>
               <Link to="/grid" className="hover:text-gray-300">
-                Grid
+                Grid & Display & Spacing
               </Link>
             </li>
           </ul>

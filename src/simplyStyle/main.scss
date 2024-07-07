@@ -10,6 +10,15 @@ $breakpoints: (
   "xl": 1200px, // Extra große Geräte (große Desktops, 1200px und darüber)
 );
 
+$spacers: (
+  0: 0,
+  1: 0.25rem,   // 4px wenn Basisfontgröße 16px ist
+  2: 0.5rem,    // 8px
+  3: 1rem,      // 16px
+  4: 1.5rem,    // 24px
+  5: 3rem       // 48px
+);
+
 @import "./grid.scss";
 @import "./colors.scss";
 @import "./button.scss";

@@ -4,7 +4,6 @@ $align-items: (start, end, center, baseline, stretch);
 $align-contents: (start, end, center, space-between, space-around, stretch);
 $align-selfs: (auto, start, end, center, baseline, stretch);
 
-
 // Flex direction
 @each $direction in $flex-directions {
   .flex-#{$direction} {
@@ -44,6 +43,14 @@ $align-selfs: (auto, start, end, center, baseline, stretch);
   @media (min-width: map-get($breakpoints, $breakpoint)) {
     display: $display-type !important;
   }
+}
+
+.d-none {
+  display: none;
+}
+
+.d-block {
+  display: block;
 }
 
 @each $break, $bp in $breakpoints {

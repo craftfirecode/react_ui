@@ -1,4 +1,4 @@
-// Abstandswerte definieren
+// Definiere Abstandswerte
 $spacers: (
   0: 0,
   1: 0.25rem,   // 4px wenn Basisfontgröße 16px ist
@@ -8,24 +8,40 @@ $spacers: (
   5: 3rem       // 48px
 );
 
-// Mixin zur Erzeugung der Abstandsklassen
+// Breakpoints definieren (Beispiel)
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+// Mixin zur Generierung von Abstandshilfsklassen
 @mixin generate-spacing-utilities {
   @each $prop, $abbrev in (margin: m, padding: p) {
+    // Klassen ohne Breakpoint generieren
     @each $size, $value in $spacers {
-      // Alle Seiten
-      .#{$abbrev}-#{$size} { #{$prop}: $value !important; }
-      // Top
-      .#{$abbrev}t-#{$size} { #{$prop}-top: $value !important; }
-      // Bottom
-      .#{$abbrev}b-#{$size} { #{$prop}-bottom: $value !important; }
-      // Left
-      .#{$abbrev}l-#{$size} { #{$prop}-left: $value !important; }
-      // Right
-      .#{$abbrev}r-#{$size} { #{$prop}-right: $value !important; }
-      // X (left & right)
-      .#{$abbrev}x-#{$size} { #{$prop}-left: $value !important; #{$prop}-right: $value !important; }
-      // Y (top & bottom)
-      .#{$abbrev}y-#{$size} { #{$prop}-top: $value !important; #{$prop}-bottom: $value !important; }
+      .#{$abbrev}-#{$size} { #{$prop}: $value; }
+      .#{$abbrev}t-#{$size} { #{$prop}-top: $value; }
+      .#{$abbrev}b-#{$size} { #{$prop}-bottom: $value; }
+      .#{$abbrev}l-#{$size} { #{$prop}-left: $value; }
+      .#{$abbrev}r-#{$size} { #{$prop}-right: $value; }
+      .#{$abbrev}x-#{$size} { #{$prop}-left: $value; #{$prop}-right: $value; }
+      .#{$abbrev}y-#{$size} { #{$prop}-top: $value; #{$prop}-bottom: $value; }
+    }
+    // Breakpoint-spezifische Klassen generieren
+    @each $breakpoint, $breakpoint-width in $breakpoints {
+      @media (min-width: $breakpoint-width) {
+        @each $size, $value in $spacers {
+          .#{$abbrev}-#{$breakpoint}-#{$size} { #{$prop}: $value; }
+          .#{$abbrev}t-#{$breakpoint}-#{$size} { #{$prop}-top: $value; }
+          .#{$abbrev}b-#{$breakpoint}-#{$size} { #{$prop}-bottom: $value; }
+          .#{$abbrev}l-#{$breakpoint}-#{$size} { #{$prop}-left: $value; }
+          .#{$abbrev}r-#{$breakpoint}-#{$size} { #{$prop}-right: $value; }
+          .#{$abbrev}x-#{$breakpoint}-#{$size} { #{$prop}-left: $value; #{$prop}-right: $value; }
+          .#{$abbrev}y-#{$breakpoint}-#{$size} { #{$prop}-top: $value; #{$prop}-bottom: $value; }
+        }
+      }
     }
   }
 }
