@@ -19,8 +19,6 @@ async function generateCustomCSS() {
         const marginMatch = cl.match(/m([trblxy]?)-\[(\d+px)\]/);
         const paddingMatch = cl.match(/p([trblxy]?)-\[(\d+px)\]/);
         const fontSizeMatch = cl.match(/text-\[([\d.]+(px|rem))\]/);
-        const textColorMatch = cl.match(/text-\[(#\w{3,6})\]/);
-        const backgroundMatch = cl.match(/bg-\[(#\w{3,6})\]/);
 
         if (marginMatch) {
           const property = marginMatch[1] ? `margin-${marginMatch[1]}` : 'margin';
@@ -32,12 +30,6 @@ async function generateCustomCSS() {
         }
         if (fontSizeMatch) {
           addStyle(cl, 'font-size', fontSizeMatch[1]);
-        }
-        if (textColorMatch) {
-          addStyle(cl, 'color', textColorMatch[1]);
-        }
-        if (backgroundMatch) {
-          addStyle(cl, 'background-color', backgroundMatch[1]);
         }
       });
     }

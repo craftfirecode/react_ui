@@ -1,15 +1,11 @@
-.p-\[150px\] {
-  padding: 150px;
+.p-\[55px\] {
+  padding: 55px;
 }
 
-.bg-\[#007bff\] {
-  background-color: #007bff;
+.text-\[12px\] {
+  font-size: 12px;
 }
 
-.text-\[150px\] {
-  font-size: 150px;
-}
-
-.m-\[50px\] {
-  margin: 50px;
+.m-\[150px\] {
+  margin: 150px;
 }
