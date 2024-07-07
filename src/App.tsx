@@ -8,7 +8,7 @@ import GridPage from "./pages/GridPage";
 
 function App() {
   return (
-    <div className="container">
+    <div className="">
       <BrowserRouter>
         <nav className="bg-gray-800 text-white p-4">
           <ul className="flex space-x-4">

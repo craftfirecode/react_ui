@@ -1,20 +1,67 @@
+// Variablen definieren (Beispiel)
+$gutter-width: 30px;
+$grid-columns: 12;
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+$gutters: (
+  0: 0,
+  1: 0.25rem,   // 4px
+  2: 0.5rem,    // 8px
+  3: 1rem,      // 16px
+  4: 1.5rem,    // 24px
+  5: 3rem       // 48px
+);
+
 // Mixin für grundlegende Spalten-Eigenschaften
 @mixin make-col-ready {
-  position: relative;
-  padding-right: $gutter-width / 2;
-  padding-left: $gutter-width / 2;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+  padding-right: calc(var(--bs-gutter-x, #{$gutter-width}) * 0.5);
+  padding-left: calc(var(--bs-gutter-x, #{$gutter-width}) * 0.5);
+  margin-top: var(--bs-gutter-y, 0);
 }
 
 // Mixin zur Erstellung einer Spalte mit festgelegter Größe
 @mixin make-col($size, $columns: $grid-columns) {
-  flex: 0 0 percentage($size / $columns);
-  max-width: percentage($size / $columns);
+  @if $size {
+    flex: 0 0 percentage($size / $columns);
+    max-width: percentage($size / $columns);
+  } @else {
+    flex: 1 1 0;
+    max-width: 100%;
+  }
+}
+
+// Mixin zur Erstellung einer automatischen Spalte
+@mixin make-col-auto() {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+// Mixin zur Erstellung einer Spalte mit Offset
+@mixin make-col-offset($size, $columns: $grid-columns) {
+  margin-left: percentage($size / $columns);
+}
+
+// Mixin zur Erstellung von Reihen mit Spalten
+@mixin row-cols($count) {
+  > * {
+    flex: 0 0 percentage(1 / $count);
+  }
 }
 
 // Grid Container
 .container {
-  padding-right: $gutter-width / 2;
-  padding-left: $gutter-width / 2;
+  padding-right: $gutter-width * 0.5;
+  padding-left: $gutter-width * 0.5;
   margin-right: auto;
   margin-left: auto;
 
@@ -27,8 +74,8 @@
 
 .container-fluid {
   width: 100%;
-  padding-right: $gutter-width / 2;
-  padding-left: $gutter-width / 2;
+  padding-right: $gutter-width * 0.5;
+  padding-left: $gutter-width * 0.5;
   margin-right: auto;
   margin-left: auto;
 }
@@ -36,48 +83,57 @@
 .row {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -$gutter-width / 2;
-  margin-left: -$gutter-width / 2;
+  margin-right: calc(-1 * $gutter-width * 0.5);
+  margin-left: calc(-1 * $gutter-width * 0.5);
 }
 
-.col {
-  @include make-col-ready;
-  flex-basis: 0;
-  flex-grow: 1;
-  max-width: 100%;
-}
+// Framework grid generation
+@mixin make-grid-columns($columns: $grid-columns, $gutter: $gutter-width, $breakpoints: $breakpoints) {
+  @each $breakpoint in map-keys($breakpoints) {
+    $infix: if($breakpoint == 'xs', '', '-#{$breakpoint}');
 
-@for $i from 1 through $grid-columns {
-  .col-#{$i} {
-    @include make-col($i);
-  }
-}
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      // Basis `.col-{bp}` Klassen für gleich breite Flexbox-Spalten
+      .col#{$infix} {
+        @include make-col-ready;
+        flex: 1 0 0%;
+      }
 
-.col-auto {
-  @include make-col-ready;
-  flex: 0 0 auto;
-  width: auto;
-}
+      .row-cols#{$infix}-auto > * {
+        @include make-col-auto;
+      }
 
-// Media Queries für responsive Anpassungen
-@each $breakpoint, $breakpoint-width in $breakpoints {
-  @media (min-width: $breakpoint-width) {
-    .col-#{$breakpoint}-auto {
-      @include make-col-ready;
-      flex: 0 0 auto;
-      width: auto;
-    }
-    
-    @for $i from 1 through $grid-columns {
-      .col-#{$breakpoint}-#{$i} {
-        @include make-col($i);
+      @for $i from 1 through $columns {
+        .col#{$infix}-#{$i} {
+          @include make-col-ready;
+          @include make-col($i, $columns);
+        }
+      }
+
+      // Offset-Klassen
+      @for $i from 0 through ($columns - 1) {
+        @if not ($infix == "" and $i == 0) { // Vermeide nutzlose .offset-0
+          .offset#{$infix}-#{$i} {
+            @include make-col-offset($i, $columns);
+          }
+        }
+      }
+
+      // Gutter-Klassen
+      @each $key, $value in $gutters {
+        .g#{$infix}-#{$key},
+        .gx#{$infix}-#{$key} {
+          --bs-gutter-x: #{$value};
+        }
+
+        .g#{$infix}-#{$key},
+        .gy#{$infix}-#{$key} {
+          --bs-gutter-y: #{$value};
+        }
       }
     }
-    
-    .col-#{$breakpoint} {
-      @include make-col-ready;
-      flex: 1;
-      max-width: 100%;
-    }
   }
 }
+
+// Nutze das Mixin für das Grid-System
+@include make-grid-columns($grid-columns, $gutter-width, $breakpoints);

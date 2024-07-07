@@ -95,6 +95,23 @@ const GridPage = () => {
           <div className="col-6 bg-secondary">123</div>
         </div>
       </div>
+      <div className="container">
+        <div className="row">
+          <div className="col-6">
+            <img className="img-fluid" src="https://via.placeholder.com/150" alt="placeholder" />
+          </div>
+          <div className="col-6">
+            <img className="img-fluid" src="https://via.placeholder.com/150" alt="placeholder" />
+          </div>
+        </div>
+      </div>
+      <div className="container">
+        <div className="row">
+          <div className="col-6 offset-3 offset-md-2 offset-lg-1 offset-xl-5">
+            <img className="img-fluid" src="https://via.placeholder.com/150" alt="placeholder" />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

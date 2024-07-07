@@ -19,6 +19,12 @@ $spacers: (
   5: 3rem       // 48px
 );
 
+.img-fluid {
+    width: 100%;           
+    height: auto;           
+    object-fit: cover;     
+  }
+
 @import "./grid.scss";
 @import "./colors.scss";
 @import "./button.scss";
