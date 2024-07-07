@@ -1,16 +1,34 @@
-$spacing-values: (5px, 10px, 15px, 20px); // Definiere mehr, wenn nötig
+// Abstandswerte definieren
+$spacers: (
+  0: 0,
+  1: 0.25rem,   // 4px wenn Basisfontgröße 16px ist
+  2: 0.5rem,    // 8px
+  3: 1rem,      // 16px
+  4: 1.5rem,    // 24px
+  5: 3rem       // 48px
+);
 
-@each $value in $spacing-values {
-  .mt-#{$value} {
-    margin-top: $value !important;
-  }
-  .mb-#{$value} {
-    margin-bottom: $value !important;
-  }
-  .ml-#{$value} {
-    margin-left: $value !important;
-  }
-  .mr-#{$value} {
-    margin-right: $value !important;
+// Mixin zur Erzeugung der Abstandsklassen
+@mixin generate-spacing-utilities {
+  @each $prop, $abbrev in (margin: m, padding: p) {
+    @each $size, $value in $spacers {
+      // Alle Seiten
+      .#{$abbrev}-#{$size} { #{$prop}: $value !important; }
+      // Top
+      .#{$abbrev}t-#{$size} { #{$prop}-top: $value !important; }
+      // Bottom
+      .#{$abbrev}b-#{$size} { #{$prop}-bottom: $value !important; }
+      // Left
+      .#{$abbrev}l-#{$size} { #{$prop}-left: $value !important; }
+      // Right
+      .#{$abbrev}r-#{$size} { #{$prop}-right: $value !important; }
+      // X (left & right)
+      .#{$abbrev}x-#{$size} { #{$prop}-left: $value !important; #{$prop}-right: $value !important; }
+      // Y (top & bottom)
+      .#{$abbrev}y-#{$size} { #{$prop}-top: $value !important; #{$prop}-bottom: $value !important; }
+    }
   }
 }
+
+// Nutze das Mixin
+@include generate-spacing-utilities;

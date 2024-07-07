@@ -1,8 +1,9 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import "./simplyStyle/main.scss";
 import HomePage from "./pages/HomePage";
-import { Button } from "./components/ui/button";
 import './generatedStyles.css';
+import TypoPage from "./pages/TypoPage";
+import ButtonPage from "./pages/ButtonPage";
 
 function App() {
   return (
@@ -15,42 +16,23 @@ function App() {
                 Home
               </Link>
             </li>
+            <li>
+              <Link to="/button" className="hover:text-gray-300">
+                Button
+              </Link>
+            </li>
+            <li>
+              <Link to="/typoPage" className="hover:text-gray-300">
+                Typo
+              </Link>
+            </li>
           </ul>
-        </nav>
-
-        <h1>Headline 1</h1>
-        <h2>Headline 2</h2>
-        <h3>Headline 3</h3>
-        <h4>Headline 4</h4>
-        <h5>Headline 5</h5>
-        <h6>Headline 6</h6>
-
-        <Button variant="primary" size="sm">Demo</Button> 
-        <Button variant="secondary" size="sm">Demo</Button> 
-        <Button variant="danger" size="sm">Demo</Button> 
-
-        <Button variant="primary" size="default">Demo</Button> 
-        <Button variant="secondary" size="default">Demo</Button> 
-        <Button variant="danger" size="default">Demo</Button> 
-        
-        <Button variant="primary" size="lg">Demo</Button> 
-        <Button variant="secondary" size="lg">Demo</Button> 
-        <Button variant="danger" size="lg">Demo</Button> 
-
-        <Button variant="outline_primary" size="sm">Demo</Button> 
-        <Button variant="outline_secondary" size="sm">Demo</Button> 
-        <Button variant="outline_danger" size="sm">Demo</Button> 
-
-        <Button variant="outline_primary" size="default">Demo</Button> 
-        <Button variant="outline_secondary" size="default">Demo</Button> 
-        <Button variant="outline_danger" size="default">Demo</Button> 
-        
-        <Button variant="outline_primary" size="lg">Demo</Button> 
-        <Button variant="outline_secondary" size="lg">Demo</Button> 
-        <Button variant="outline_danger" size="lg">Demo</Button> 
+        </nav>     
 
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/button" element={<ButtonPage />} />
+          <Route path="/typoPage" element={<TypoPage />} />
         </Routes>
       </BrowserRouter>
     </div>
