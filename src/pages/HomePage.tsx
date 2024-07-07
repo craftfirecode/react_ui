@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Checkbox from "../components/ui/checkbox";
 import Radio from "../components/ui/radio";
 import Switch from "../components/ui/switch";
-import { Button } from '../components/ui/button';
+import { Button } from "../components/ui/button";
+import { Input } from "../components/ui/input";
 
 const HomePage = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -23,8 +24,34 @@ const HomePage = () => {
 
   return (
     <div>
-      <Button variant="primary" size="md">Button</Button>
-      <Button variant="outline_primary" size="md">Button</Button>
+      <div className="mb-3">
+        <label htmlFor="exampleFormControlInput1" className="form-label">
+          Email address
+        </label>
+        <input
+          type="email"
+          className="form-control"
+          id="exampleFormControlInput1"
+          placeholder="name@example.com"
+        />
+      </div>
+      <div className="form-floating mb-3">
+        <input
+          type="email"
+          className="form-control"
+          id="floatingInput"
+          placeholder="name@example.com"
+        />
+        <label htmlFor="floatingInput">Email address</label>
+      </div>
+      <Input placeholder="Username" />
+      <Input floating placeholder="Username" />
+      <Button variant="primary" size="md">
+        Button
+      </Button>
+      <Button variant="outline_primary" size="md">
+        Button
+      </Button>
       <Checkbox
         label="Checkbox"
         checked={isChecked}
