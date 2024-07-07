@@ -1,0 +1,16 @@
+$spacing-values: (5px, 10px, 15px, 20px); // Definiere mehr, wenn nötig
+
+@each $value in $spacing-values {
+  .mt-#{$value} {
+    margin-top: $value !important;
+  }
+  .mb-#{$value} {
+    margin-bottom: $value !important;
+  }
+  .ml-#{$value} {
+    margin-left: $value !important;
+  }
+  .mr-#{$value} {
+    margin-right: $value !important;
+  }
+}

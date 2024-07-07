@@ -1,0 +1,32 @@
+$flex-directions: ('row', 'column', 'row-reverse', 'column-reverse');
+$justify-contents: ('start', 'end', 'center', 'between', 'around');
+
+// Flex direction
+@each $direction in $flex-directions {
+  .flex-#{$direction} {
+    flex-direction: $direction !important;
+  }
+}
+
+// Justify content
+@each $justify in $justify-contents {
+  .justify-content-#{$justify} {
+    justify-content: $justify !important;
+  }
+}
+
+$display-types: ('none', 'inline', 'inline-block', 'block', 'grid', 'table', 'table-cell', 'flex');
+
+@each $display in $display-types {
+  .d-#{$display} {
+    display: $display !important;
+  }
+
+  @each $breakpoint, $breakpoint-width in $breakpoints {
+    @media (min-width: $breakpoint-width) {
+      .d-#{$breakpoint}-#{$display} {
+        display: $display !important;
+      }
+    }
+  }
+}

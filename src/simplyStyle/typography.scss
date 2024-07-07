@@ -44,3 +44,20 @@ body {
   h2 { font-size: 1.5rem; }
   // Füge weitere Anpassungen hier hinzu
 }
+
+$text-alignments: ('left', 'right', 'center', 'justify');
+$font-weights: ('bold': bold, 'normal': normal, 'light': 300);
+
+// Text alignment classes
+@each $alignment in $text-alignments {
+  .text-#{$alignment} {
+    text-align: $alignment !important;
+  }
+}
+
+// Font weight classes
+@each $weight-name, $weight-value in $font-weights {
+  .font-weight-#{$weight-name} {
+    font-weight: $weight-value !important;
+  }
+}
