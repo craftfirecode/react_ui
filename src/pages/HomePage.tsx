@@ -24,28 +24,8 @@ const HomePage = () => {
 
   return (
     <div>
-      <div className="mb-3">
-        <label htmlFor="exampleFormControlInput1" className="form-label">
-          Email address
-        </label>
-        <input
-          type="email"
-          className="form-control"
-          id="exampleFormControlInput1"
-          placeholder="name@example.com"
-        />
-      </div>
-      <div className="form-floating mb-3">
-        <input
-          type="email"
-          className="form-control"
-          id="floatingInput"
-          placeholder="name@example.com"
-        />
-        <label htmlFor="floatingInput">Email address</label>
-      </div>
-      <Input placeholder="Username" />
-      <Input floating placeholder="Username" />
+      <Input placeholder="Placeholder" label="Name" />
+      <Input floating label="Name" />
       <Button variant="primary" size="md">
         Button
       </Button>
