@@ -1,22 +1,23 @@
-// Mixins
+// Mixin für grundlegende Spalten-Eigenschaften
 @mixin make-col-ready {
   position: relative;
   padding-right: $gutter-width / 2;
   padding-left: $gutter-width / 2;
 }
 
+// Mixin zur Erstellung einer Spalte mit festgelegter Größe
 @mixin make-col($size, $columns: $grid-columns) {
   flex: 0 0 percentage($size / $columns);
   max-width: percentage($size / $columns);
 }
 
+// Grid Container
 .container {
   padding-right: $gutter-width / 2;
   padding-left: $gutter-width / 2;
   margin-right: auto;
   margin-left: auto;
 
-  // Responsive settings
   @each $breakpoint, $breakpoint-width in $breakpoints {
     @media (min-width: $breakpoint-width) {
       max-width: $breakpoint-width - $gutter-width;
@@ -32,7 +33,6 @@
   margin-left: auto;
 }
 
-// Rows
 .row {
   display: flex;
   flex-wrap: wrap;
@@ -40,7 +40,6 @@
   margin-left: -$gutter-width / 2;
 }
 
-// Columns
 .col {
   @include make-col-ready;
   flex-basis: 0;
@@ -56,10 +55,11 @@
 
 .col-auto {
   @include make-col-ready;
-  flex: 0 0 auto; // Allows the column to grow and shrink according to its content
-  width: auto;    // Width should be set to auto to accommodate content size
+  flex: 0 0 auto;
+  width: auto;
 }
 
+// Media Queries für responsive Anpassungen
 @each $breakpoint, $breakpoint-width in $breakpoints {
   @media (min-width: $breakpoint-width) {
     .col-#{$breakpoint}-auto {
@@ -67,20 +67,17 @@
       flex: 0 0 auto;
       width: auto;
     }
-  }
-}
-
-// Media Queries
-@each $breakpoint, $breakpoint-width in $breakpoints {
-  @media (min-width: $breakpoint-width) {
-    .col-#{$breakpoint} {
-      @include make-col-ready;
-    }
-
+    
     @for $i from 1 through $grid-columns {
       .col-#{$breakpoint}-#{$i} {
         @include make-col($i);
       }
+    }
+    
+    .col-#{$breakpoint} {
+      @include make-col-ready;
+      flex: 1;
+      max-width: 100%;
     }
   }
 }

@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import './generatedStyles.css';
 import TypoPage from "./pages/TypoPage";
 import ButtonPage from "./pages/ButtonPage";
+import GridPage from "./pages/GridPage";
 
 function App() {
   return (
@@ -26,6 +27,11 @@ function App() {
                 Typo
               </Link>
             </li>
+            <li>
+              <Link to="/grid" className="hover:text-gray-300">
+                Grid
+              </Link>
+            </li>
           </ul>
         </nav>     
 
@@ -33,6 +39,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/button" element={<ButtonPage />} />
           <Route path="/typoPage" element={<TypoPage />} />
+          <Route path="/grid" element={<GridPage />} />
         </Routes>
       </BrowserRouter>
     </div>
