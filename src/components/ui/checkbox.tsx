@@ -5,17 +5,17 @@ interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Checkbox: React.FC<CheckboxProps> = ({ label = "String", ...props }) => {
-  const id = props.id || `checkbox-${Math.random().toString(36).substr(2, 9)}`;
+  const checkboxRef = useRef<HTMLInputElement>(null);
 
   return (
     <div className="form-check">
       <input
         type="checkbox"
         className="form-check-input"
-        id={id}
+        ref={checkboxRef}
         {...props}
       />
-      <label className="form-check-label" htmlFor={id}>
+      <label className="form-check-label" onClick={() => checkboxRef.current?.click()}>
         {label}
       </label>
     </div>

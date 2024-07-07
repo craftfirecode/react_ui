@@ -47,7 +47,6 @@ const HomePage = () => {
       <Radio
         label="Option 1"
         name="options"
-        id="option1"
         value="1"
         checked={selectedOption === "1"}
         onChange={handleRadioChange}
@@ -55,7 +54,6 @@ const HomePage = () => {
       <Radio
         label="Option 2"
         name="options"
-        id="option2"
         value="2"
         checked={selectedOption === "2"}
         onChange={handleRadioChange}
@@ -63,7 +61,6 @@ const HomePage = () => {
       <Radio
         label="Option 3"
         name="options"
-        id="option3"
         value="3"
         checked={selectedOption === "3"}
         onChange={handleRadioChange}
@@ -71,7 +68,6 @@ const HomePage = () => {
       <Radio
         label="Option 4"
         name="options"
-        id="option4"
         value="4"
         checked={selectedOption === "4"}
         onChange={handleRadioChange}

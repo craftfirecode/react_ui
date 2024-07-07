@@ -1,21 +1,21 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 interface RadioProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
 }
 
 const Radio: React.FC<RadioProps> = ({ label = "String", ...props }) => {
-  const id = props.id || `radio-${Math.random().toString(36).substr(2, 9)}`;
+  const radioRef = useRef<HTMLInputElement>(null);
 
   return (
     <div className="form-check">
       <input
         type="radio"
         className="form-check-input"
-        id={id}
+        ref={radioRef}
         {...props}
       />
-      <label className="form-check-label" htmlFor={id}>
+      <label className="form-check-label" onClick={() => radioRef.current?.click()}>
         {label}
       </label>
     </div>
