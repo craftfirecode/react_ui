@@ -1,5 +1,9 @@
-$flex-directions: ('row', 'column', 'row-reverse', 'column-reverse');
-$justify-contents: ('start', 'end', 'center', 'between', 'around');
+$flex-directions: (row, column, row-reverse, column-reverse);
+$justify-contents: (start, end, center, between, around);
+$align-items: (start, end, center, baseline, stretch);
+$align-contents: (start, end, center, space-between, space-around, stretch);
+$align-selfs: (auto, start, end, center, baseline, stretch);
+
 
 // Flex direction
 @each $direction in $flex-directions {
@@ -15,18 +19,50 @@ $justify-contents: ('start', 'end', 'center', 'between', 'around');
   }
 }
 
-$display-types: ('none', 'inline', 'inline-block', 'block', 'grid', 'table', 'table-cell', 'flex');
-
-@each $display in $display-types {
-  .d-#{$display} {
-    display: $display !important;
+// Align items
+@each $align in $align-items {
+  .align-items-#{$align} {
+    align-items: $align !important;
   }
+}
 
-  @each $breakpoint, $breakpoint-width in $breakpoints {
-    @media (min-width: $breakpoint-width) {
-      .d-#{$breakpoint}-#{$display} {
-        display: $display !important;
-      }
-    }
+// Align content
+@each $align in $align-contents {
+  .align-content-#{$align} {
+    align-content: $align !important;
+  }
+}
+
+// Align self
+@each $self in $align-selfs {
+  .align-self-#{$self} {
+    align-self: $self !important;
+  }
+}
+
+@mixin display($breakpoint, $display-type) {
+  @media (min-width: map-get($breakpoints, $breakpoint)) {
+    display: $display-type !important;
+  }
+}
+
+@each $break, $bp in $breakpoints {
+  .d-#{$break}-none {
+    @include display($break, none);
+  }
+  .d-#{$break}-block {
+    @include display($break, block);
+  }
+  .d-#{$break}-inline {
+    @include display($break, inline);
+  }
+  .d-#{$break}-inline-block {
+    @include display($break, inline-block);
+  }
+  .d-#{$break}-flex {
+    @include display($break, flex);
+  }
+  .d-#{$break}-grid {
+    @include display($break, grid);
   }
 }

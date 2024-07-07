@@ -1,3 +1,15 @@
+// Variablen
+$gutter-width: 30px; // Abstand zwischen den Spalten
+$grid-columns: 12; // Anzahl der Spalten im Grid
+
+$breakpoints: (
+  "xs": 0,      // Extra kleine Geräte (Porträt-Handys, weniger als 576px)
+  "sm": 576px,  // Kleine Geräte (Landschaft-Handys, 576px und darüber)
+  "md": 768px,  // Mittlere Geräte (Tablets, 768px und darüber)
+  "lg": 992px,  // Große Geräte (Desktops, 992px und darüber)
+  "xl": 1200px, // Extra große Geräte (große Desktops, 1200px und darüber)
+);
+
 @import "./grid.scss";
 @import "./colors.scss";
 @import "./button.scss";
