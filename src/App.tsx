@@ -1,7 +1,7 @@
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import "./simplyStyle/main.scss";
 import HomePage from "./pages/HomePage";
 import './generatedStyles.css';
+import './../App.scss';
 import TypoPage from "./pages/TypoPage";
 import ButtonPage from "./pages/ButtonPage";
 import GridPage from "./pages/GridPage";

@@ -1,6 +1,5 @@
 import fs from 'fs';
 import { glob } from 'glob';
-import cheerio from 'cheerio';
 import css from 'css';
 
 async function generateCustomCSS() {
@@ -21,12 +20,12 @@ async function generateCustomCSS() {
         const fontSizeMatch = cl.match(/text-\[([\d.]+(px|rem))\]/);
 
         if (marginMatch) {
-          const property = marginMatch[1] ? `margin-${marginMatch[1]}` : 'margin';
-          addStyle(cl, property, marginMatch[2]);
+          const properties = getMarginProperties(marginMatch[1]);
+          properties.forEach(property => addStyle(cl, property, marginMatch[2]));
         }
         if (paddingMatch) {
-          const property = paddingMatch[1] ? `padding-${paddingMatch[1]}` : 'padding';
-          addStyle(cl, property, paddingMatch[2]);
+          const properties = getPaddingProperties(paddingMatch[1]);
+          properties.forEach(property => addStyle(cl, property, paddingMatch[2]));
         }
         if (fontSizeMatch) {
           addStyle(cl, 'font-size', fontSizeMatch[1]);
@@ -44,17 +43,43 @@ async function generateCustomCSS() {
     });
   }
 
+  // Hilfsfunktion zur Erkennung von Margin-Properties
+  function getMarginProperties(marginAbbreviation) {
+    switch (marginAbbreviation) {
+      case 't': return ['margin-top'];
+      case 'r': return ['margin-right'];
+      case 'b': return ['margin-bottom'];
+      case 'l': return ['margin-left'];
+      case 'x': return ['margin-left', 'margin-right'];
+      case 'y': return ['margin-top', 'margin-bottom'];
+      default: return ['margin'];
+    }
+  }
+
+  // Hilfsfunktion zur Erkennung von Padding-Properties
+  function getPaddingProperties(paddingAbbreviation) {
+    switch (paddingAbbreviation) {
+      case 't': return ['padding-top'];
+      case 'r': return ['padding-right'];
+      case 'b': return ['padding-bottom'];
+      case 'l': return ['padding-left'];
+      case 'x': return ['padding-left', 'padding-right'];
+      case 'y': return ['padding-top', 'padding-bottom'];
+      default: return ['padding'];
+    }
+  }
+
   const stylesheet = {
     type: 'stylesheet',
     stylesheet: {
       rules: styles.map(style => ({
         type: 'rule',
         selectors: [style.selector],
-        declarations: [{
+        declarations: Object.keys(style.declaration).map(property => ({
           type: 'declaration',
-          property: Object.keys(style.declaration)[0],
-          value: style.declaration[Object.keys(style.declaration)[0]]
-        }]
+          property,
+          value: style.declaration[property]
+        }))
       }))
     }
   };
